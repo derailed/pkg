@@ -13,7 +13,8 @@
 
 <br/>
 <br/>
-> A sample lib to load Iconoflix movies from mem or file.
+> A sample Iconoflix movies loader library. An Iconoflix movie is a representation
+> of a movie as a collection of icons.
 
 
 ---
