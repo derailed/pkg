@@ -1,5 +1,5 @@
 language: go
-go_import_path: github.com/derailed/pkg/iconoflix
+go_import_path: github.com/derailed/pkg
 go:
   - 1.9.x
   - tip
