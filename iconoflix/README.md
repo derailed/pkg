@@ -1,3 +1,11 @@
+[![Build Status](https://travis-ci.org/derailed/pkg.svg?branch=master)](https://travis-ci.org/derailed/pkg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/derailed/pkg)](https://goreportcard.com/report/github.com/derailed/pkg)
+[![GoDoc](https://godoc.org/github.com/derailed/pkg/iconoflix?status.svg)](http://godoc.org/github.com/derailed/pkg/iconoflix)
+
+<br/>
+<br/>
+
+
 <div align="center" style="margin-top:10px">
   <img src="assets/iconoflix.png"/>
 </div>
@@ -6,11 +14,6 @@
 <br/>
 
 > A sample lib to load Iconoflix movies from mem or file.
-
-
-[![Build Status](https://travis-ci.org/derailed/pkg.svg?branch=master)](https://travis-ci.org/derailed/pkg)
-[![Go Report Card](https://goreportcard.com/badge/github.com/derailed/pkg)](https://goreportcard.com/report/github.com/derailed/pkg)
-[![GoDoc](https://godoc.org/github.com/derailed/pkg/iconoflix?status.svg)](http://godoc.org/github.com/derailed/pkg/iconoflix)
 
 
 ---
