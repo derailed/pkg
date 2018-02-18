@@ -1,4 +1,4 @@
-# Iconoflix Loader
+# Iconoflix
 
 
 [![Build Status](https://travis-ci.org/derailed/pkg.svg?branch=master)](https://travis-ci.org/derailed/pkg)
@@ -7,15 +7,12 @@
 
 <br/>
 <br/>
-
-
 <div align="center" style="margin-top:10px">
   <img src="assets/iconoflix.png"/>
 </div>
 
 <br/>
 <br/>
-
 > A sample lib to load Iconoflix movies from mem or file.
 
 
