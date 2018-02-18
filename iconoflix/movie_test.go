@@ -1,3 +1,4 @@
+// © 2018 Imhotep Software LLC. All rights reserved.
 package iconoflix_test
 
 import (
