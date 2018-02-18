@@ -1,3 +1,9 @@
+package iconoflix
+
+// MOVIES in memory movie corpus
+
+const (
+	boxOffice = `
 movies:
 - name: Home Alone
   icons:
@@ -36,3 +42,17 @@ movies:
   icons:
   - emoji: ! "🔪"
   - emoji: ! "🚿"
+`
+
+	bMovies = `
+movies:
+- name: Cobra
+  icons:
+  - emoji: ! "🕶"
+  - emoji: ! "🚔"
+- name: Karate Kid
+  icons:
+  - emoji: ! "🧒"
+  - emoji: ! "🥋"
+`
+)

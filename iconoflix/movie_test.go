@@ -8,7 +8,7 @@ import (
 )
 
 func TestLoadFile(t *testing.T) {
-	data, err := iconoflix.LoadFile("./assets/movies.yml")
+	data, err := iconoflix.LoadFile("./assets/test.yml")
 	assert.Nil(t, err)
 
 	assert.Equal(t, len(data.Movies), 2)
@@ -34,7 +34,7 @@ func TestLoadMem_BMovies(t *testing.T) {
 	data, err := iconoflix.LoadMem("v2")
 	assert.Nil(t, err)
 
-	assert.Equal(t, len(data.Movies), 1)
+	assert.Equal(t, len(data.Movies), 2)
 	assert.Equal(t, "Cobra", data.Movies[0].Name)
 	assert.Equal(t, "🕶", data.Movies[0].Icons[0].Emoji)
 }

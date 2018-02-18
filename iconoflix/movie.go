@@ -1,3 +1,7 @@
+// © 2018 Imhotep Software LLC. All rights reserved.
+
+// Package iconoflix A playground lib to load Iconoflix movies from mem or file.
+// An Iconoflix movie is a representation of a movie as a collection of icons.
 package iconoflix
 
 import (
@@ -69,58 +73,3 @@ func LoadFile(path string) (Movies, error) {
 
 	return movies, nil
 }
-
-// ----------------------------------------------------------------------------
-
-// MOVIES in memory movie corpus
-
-const (
-	boxOffice = `
-movies:
-- name: Home Alone
-  icons:
-  - emoji: ! "🏡"
-  - emoji: ! "🛀"
-- name: Planes, Trains And Automobiles
-  icons:
-  - emoji: ! "✈️"
-  - emoji: ! "🚂"
-  - emoji: ! "🚘"
-- name: The Mechanic
-  icons:
-  - emoji: ! "🚙"
-  - emoji: ! "🔧"
-- name: Thor
-  icons:
-  - emoji: ! "⚡️"
-  - emoji: ! "🔨"
-- name: Harry Potter
-  icons:
-  - emoji: ! "⚡️"
-  - emoji: ! "🧙‍"
-- name: Terminator
-  icons:
-  - emoji: ! "🤖"
-  - emoji: ! "☠️"
-- name: StarTrek
-  icons:
-  - emoji: ! "🚀"
-  - emoji: ! "💫"
-- name: Titanic
-  icons:
-  - emoji: ! "🚤"
-  - emoji: ! "📌"
-- name: Psycho
-  icons:
-  - emoji: ! "🔪"
-  - emoji: ! "🚿"
-`
-
-	bMovies = `
-movies:
-- name: Cobra
-  icons:
-  - emoji: ! "🕶"
-  - emoji: ! "🚔"
-`
-)

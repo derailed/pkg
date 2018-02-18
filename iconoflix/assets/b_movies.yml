@@ -1,0 +1,9 @@
+movies:
+- name: Cobra
+  icons:
+  - emoji: ! "🕶"
+  - emoji: ! "🚔"
+- name: Karate Kid
+  icons:
+  - emoji: ! "🧒"
+  - emoji: ! "🥋"
