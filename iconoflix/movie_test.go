@@ -3,7 +3,7 @@ package iconoflix_test
 import (
 	"testing"
 
-	"github.com/derailed/iconoflix"
+	"github.com/derailed/pkg/iconoflix"
 	"github.com/stretchr/testify/assert"
 )
 
