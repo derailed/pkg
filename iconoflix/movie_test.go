@@ -11,6 +11,25 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+type (
+	MockClient struct{}
+
+	nopCloser struct {
+		io.Reader
+	}
+)
+
+func (nopCloser) Close() error { return nil }
+
+func (m *MockClient) Do(r *http.Request) (*http.Response, error) {
+	resp := &http.Response{}
+
+	resp.StatusCode = http.StatusOK
+	resp.Body = nopCloser{bytes.NewBufferString(`{"status": 200}`)}
+
+	return resp, nil
+}
+
 func TestLoadFile(t *testing.T) {
 	data, err := iconoflix.LoadFile("./assets/test.yml")
 	assert.Nil(t, err)
@@ -48,26 +67,16 @@ func TestRandMovie(t *testing.T) {
 	assert.NotEqual(t, "", m.Name)
 }
 
-type (
-	MockClient struct{}
-
-	nopCloser struct {
-		io.Reader
-	}
-)
-
-func (nopCloser) Close() error { return nil }
-
-func (m *MockClient) Do(r *http.Request) (*http.Response, error) {
-	resp := &http.Response{}
-
-	resp.StatusCode = http.StatusOK
-	resp.Body = nopCloser{bytes.NewBufferString(`{"status": 200}`)}
-
-	return resp, nil
-}
-
 func TestCall(t *testing.T) {
 	err := iconoflix.Call(&MockClient{}, "GET", "/test", nil, nil, nil)
+	assert.Nil(t, err)
+}
+
+func TestCallCookie(t *testing.T) {
+	c := []*http.Cookie{
+		&http.Cookie{Name: "test", Value: "blee"},
+	}
+
+	err := iconoflix.Call(&MockClient{}, "GET", "/test", nil, nil, c)
 	assert.Nil(t, err)
 }
