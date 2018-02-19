@@ -2,6 +2,9 @@
 package iconoflix_test
 
 import (
+	"bytes"
+	"io"
+	"net/http"
 	"testing"
 
 	"github.com/derailed/pkg/iconoflix"
@@ -43,4 +46,26 @@ func TestLoadMem_BMovies(t *testing.T) {
 func TestRandMovie(t *testing.T) {
 	m := iconoflix.RandMovie("v1")
 	assert.NotEqual(t, "", m.Name)
+}
+
+type (
+	MockClient struct{}
+
+	nopCloser struct {
+		io.Reader
+	}
+)
+
+func (nopCloser) Close() error { return nil }
+
+func (m *MockClient) Do(r *http.Request) (*http.Response, error) {
+	resp := &http.Response{}
+	resp.StatusCode = http.StatusOK
+	resp.Body = nopCloser{bytes.NewBufferString(`{"status": 200}`)}
+
+	return resp, nil
+}
+func TestCall(t *testing.T) {
+	err := iconoflix.Call(&MockClient{}, "GET", "/test", nil, nil, nil)
+	assert.Nil(t, err)
 }

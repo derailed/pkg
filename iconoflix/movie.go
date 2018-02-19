@@ -32,6 +32,11 @@ func init() {
 }
 
 type (
+	// Httper a client that handles HTTP calls
+	Httper interface {
+		Do(req *http.Request) (*http.Response, error)
+	}
+
 	// Icon an emoji representation
 	Icon struct {
 		Emoji string `yaml:"emoji"`
@@ -80,7 +85,7 @@ func LoadFile(path string) (Movies, error) {
 }
 
 // Call a service URL by specifying method, payload and optional cookies
-func Call(method, url string, payload io.Reader, res interface{}, cookie []*http.Cookie) error {
+func Call(c Httper, method, url string, payload io.Reader, res interface{}, cookie []*http.Cookie) error {
 	req, err := http.NewRequest(method, url, payload)
 	if err != nil {
 		return err
@@ -93,8 +98,7 @@ func Call(method, url string, payload io.Reader, res interface{}, cookie []*http
 		}
 	}
 
-	clt := http.DefaultClient
-	resp, err := clt.Do(req)
+	resp, err := c.Do(req)
 	if err != nil {
 		return errors.Wrap(err, fmt.Sprintf("remote call %s crapped out!", url))
 	}

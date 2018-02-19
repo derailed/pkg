@@ -4,7 +4,7 @@ IMAGE   := quay.io/imhotepio/f1
 help:
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-watch:
+test:
 	@reflex -g '*.go' go test
 
 cov:         ## Runs code coverage tool
