@@ -7,7 +7,7 @@ help:
 watch:
 	@reflex -g '*.go' go test
 
-cov:
+cov:         ## Runs code coverage tool
 	@go test --coverprofile cov.out
 
 stamp:       ## Stamp the build with a sha rev

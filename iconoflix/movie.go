@@ -5,11 +5,16 @@
 package iconoflix
 
 import (
+	"encoding/json"
+	"fmt"
+	"io"
 	"io/ioutil"
 	"math/rand"
+	"net/http"
 	"time"
 
 	"github.com/go-yaml/yaml"
+	"github.com/pkg/errors"
 )
 
 var (
@@ -72,4 +77,30 @@ func LoadFile(path string) (Movies, error) {
 	}
 
 	return movies, nil
+}
+
+// Call a service URL by specifying method, payload and optional cookies
+func Call(method, url string, payload io.Reader, res interface{}, cookie []*http.Cookie) error {
+	req, err := http.NewRequest(method, url, payload)
+	if err != nil {
+		return err
+	}
+	req.Header.Add("Content-Type", "application/json")
+
+	if cookie != nil {
+		for _, c := range cookie {
+			req.AddCookie(c)
+		}
+	}
+
+	clt := http.DefaultClient
+	resp, err := clt.Do(req)
+	if err != nil {
+		return errors.Wrap(err, fmt.Sprintf("remote call %s crapped out!", url))
+	}
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("doh!! %s failed", url)
+	}
+
+	return json.NewDecoder(resp.Body).Decode(&res)
 }
