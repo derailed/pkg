@@ -60,11 +60,13 @@ func (nopCloser) Close() error { return nil }
 
 func (m *MockClient) Do(r *http.Request) (*http.Response, error) {
 	resp := &http.Response{}
+
 	resp.StatusCode = http.StatusOK
 	resp.Body = nopCloser{bytes.NewBufferString(`{"status": 200}`)}
 
 	return resp, nil
 }
+
 func TestCall(t *testing.T) {
 	err := iconoflix.Call(&MockClient{}, "GET", "/test", nil, nil, nil)
 	assert.Nil(t, err)
