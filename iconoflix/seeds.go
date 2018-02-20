@@ -30,6 +30,11 @@ movies:
   icons:
   - emoji: ! "🤖"
   - emoji: ! "☠️"
+- name: Rango
+  icons:
+  - emoji: ! "🦎"
+  - emoji: ! "🤠"
+  - emoji: ! "💦"
 - name: StarTrek
   icons:
   - emoji: ! "🚀"
@@ -42,6 +47,11 @@ movies:
   icons:
   - emoji: ! "🔪"
   - emoji: ! "🚿"
+- name: StarWars
+  icons:
+  - emoji: ! "🌟"
+  - emoji: ! "🛰"
+  - emoji: ! "☣️"
 `
 
 	bMovies = `
@@ -54,5 +64,27 @@ movies:
   icons:
   - emoji: ! "🧒"
   - emoji: ! "🥋"
+- name: Plan 9 From Outer Space
+  icons:
+  - emoji: ! "🛰"
+  - emoji: ! "📝"
+  - emoji: ! "9"
+- name: Death Race
+  icons:
+  - emoji: ! "⚰️"
+  - emoji: ! "🏎"
+- name: The Big Doll House
+  icons:
+  - emoji: ! "🎎"
+  - emoji: ! "🏠"
+- name: Attack Of The Killer Tomatoes
+  icons:
+  - emoji: ! "🍅"
+  - emoji: ! "🗡"
+- name: Dinosaur Island
+  icons:
+  - emoji: ! "🦕"
+  - emoji: ! "🦖"
+  - emoji: ! "🏝"
 `
 )

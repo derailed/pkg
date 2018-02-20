@@ -4,11 +4,15 @@ IMAGE   := quay.io/imhotepio/f1
 help:
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-test:
+test:        ## Run all tests
+	go test
+
+watch:       ## Watch tests
 	@reflex -g '*.go' go test
 
 cov:         ## Runs code coverage tool
 	@go test --coverprofile cov.out
+	@go tool cover --html cov.out
 
 stamp:       ## Stamp the build with a sha rev
 	@git rev-parse --short HEAD > /tmp/build
