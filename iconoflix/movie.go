@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"math/rand"
 	"net/http"
 	"time"
@@ -106,5 +107,10 @@ func Call(c Httper, method, url string, payload io.Reader, res interface{}, cook
 		return fmt.Errorf("doh!! %s failed", url)
 	}
 
-	return json.NewDecoder(resp.Body).Decode(&res)
+	defer resp.Body.Close()
+	raw, err := ioutil.ReadAll(resp.Body)
+
+	log.Printf("RESP: %#v", string(raw))
+	return json.Unmarshal(raw, &res)
+	// return json.NewDecoder(resp.Body).Decode(&res)
 }
