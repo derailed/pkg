@@ -100,16 +100,11 @@ func Call(c Httper, method, url string, payload io.Reader, res interface{}, cook
 
 	resp, err := c.Do(req)
 	if err != nil {
-		return errors.Wrap(err, fmt.Sprintf("remote call %s crapped out!", url))
+		return errors.Wrap(err, fmt.Sprintf("boom: remote call %s crapped out!", url))
 	}
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("doh!! %s failed", url)
+		return fmt.Errorf("boom: url call `%s failed with code (%d)", url, resp.StatusCode)
 	}
 
-	defer resp.Body.Close()
-	raw, err := ioutil.ReadAll(resp.Body)
-
-	// log.Printf("RESP: %#v", string(raw))
-	return json.Unmarshal(raw, &res)
-	// return json.NewDecoder(resp.Body).Decode(&res)
+	return json.NewDecoder(resp.Body).Decode(&res)
 }
